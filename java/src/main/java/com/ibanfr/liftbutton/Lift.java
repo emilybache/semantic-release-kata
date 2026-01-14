@@ -1,17 +1,18 @@
 package com.ibanfr.liftbutton;
 
 public class Lift {
-    private String light = "OFF";
+    private boolean lightOn = false;
 
     public String doors() {
         return "CLOSED";
     }
 
     public void pressButton() {
-        light = "ON";
+        lightOn = true;
     }
 
     public String light() {
-        return light;
+        if (lightOn) return "ON";
+        else return "OFF";
     }
 }

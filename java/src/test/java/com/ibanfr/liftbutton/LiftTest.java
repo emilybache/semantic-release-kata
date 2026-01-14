@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LiftTest {
 
@@ -21,5 +22,12 @@ class LiftTest {
         assertThat(new Lift())
                 .as("Lift should be created")
                 .isNotNull();
+    }
+
+    @Test
+    @DisplayName("doors should be CLOSED when Lift is created")
+    void doorsShouldBeClosedWhenLiftIsCreated() {
+        var lift = new Lift();
+        assertEquals("CLOSED", lift.doors());
     }
 }

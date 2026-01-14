@@ -4,12 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LiftTest {
 
     //TEST LIST
-    //[] - doors should be CLOSED when Lift is created
+    //[x] - doors should be CLOSED when Lift is created
     //[] - should switch lights ON when button is pressed and doors are CLOSED
     //[] - should OPEN the lift doors when lift arrives
     //[] - should switch OFF the lights when lift arrives
@@ -29,5 +30,16 @@ class LiftTest {
     void doorsShouldBeClosedWhenLiftIsCreated() {
         var lift = new Lift();
         assertEquals("CLOSED", lift.doors());
+    }
+
+    @Test
+    @DisplayName("should switch lights ON when button is pressed and doors are CLOSED")
+    void shouldSwitchLightsOnWhenButtonIsPressedAndDoorsAreClosed() {
+        var lift = new Lift();
+        lift.pressButton();
+        assertAll(
+                () -> assertEquals("ON", lift.light()),
+                () -> assertEquals("CLOSED", lift.doors())
+        );
     }
 }

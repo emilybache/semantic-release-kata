@@ -4,7 +4,7 @@ public class Lift {
     private boolean lightOn = false;
 
     public String doors() {
-        return "CLOSED";
+        return "OPEN";
     }
 
     public void pressButton() {

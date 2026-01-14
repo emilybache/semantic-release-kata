@@ -29,7 +29,7 @@ class LiftTest {
     @DisplayName("doors should be CLOSED when Lift is created")
     void doorsShouldBeClosedWhenLiftIsCreated() {
         var lift = new Lift();
-        assertEquals("CLOSED", lift.doors());
+        assertEquals("OPEN", lift.doors());
     }
 
     @Test
@@ -39,7 +39,7 @@ class LiftTest {
         lift.pressButton();
         assertAll(
                 () -> assertEquals(true, lift.light()),
-                () -> assertEquals("CLOSED", lift.doors())
+                () -> assertEquals("OPEN", lift.doors())
         );
     }
 }

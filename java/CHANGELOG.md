@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/emilybache/semantic-release-kata/compare/v1.2.0...v2.0.0) (2026-01-14)
+
+
+### Features
+
+* doors open ([70aa6df](https://github.com/emilybache/semantic-release-kata/commit/70aa6df7853af59f4b41155c94c956dd2ab11b21))
+
+
+### BREAKING CHANGES
+
+* enable escape if needed
+
 # [1.2.0](https://github.com/emilybache/semantic-release-kata/compare/v1.1.0...v1.2.0) (2026-01-14)
 
 

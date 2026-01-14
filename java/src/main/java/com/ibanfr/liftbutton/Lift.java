@@ -11,8 +11,7 @@ public class Lift {
         lightOn = true;
     }
 
-    public String light() {
-        if (lightOn) return "ON";
-        else return "OFF";
+    public boolean light() {
+        return lightOn;
     }
 }

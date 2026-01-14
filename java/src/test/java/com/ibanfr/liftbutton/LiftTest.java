@@ -38,7 +38,7 @@ class LiftTest {
         var lift = new Lift();
         lift.pressButton();
         assertAll(
-                () -> assertEquals("ON", lift.light()),
+                () -> assertEquals(true, lift.light()),
                 () -> assertEquals("CLOSED", lift.doors())
         );
     }

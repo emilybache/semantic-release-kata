@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/emilybache/semantic-release-kata/compare/v1.1.0...v1.2.0) (2026-01-14)
+
+
+### Features
+
+* light returns a boolean ([6321abf](https://github.com/emilybache/semantic-release-kata/commit/6321abfe08c15e552cfe45fd940f69898079bdb9))
+
 # [1.1.0](https://github.com/emilybache/semantic-release-kata/compare/v1.0.0...v1.1.0) (2026-01-14)
 
 

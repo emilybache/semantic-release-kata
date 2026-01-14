@@ -1,0 +1,66 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "main"]
+    paths:
+      - "csharp/**"
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "csharp/**"
+env:
+  SOLUTION_PATH: 'csharp/SemanticRelease.sln'
+  PROJECT_PATH: 'csharp/LiftButton'
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.SOLUTION_PATH }}
+
+      - name: Build
+        run: dotnet build ${{ env.SOLUTION_PATH }} --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test ${{ env.SOLUTION_PATH }} --configuration Release --no-build --verbosity normal
+
+      - name: Semantic Release
+        id: release
+        uses: cycjimmy/semantic-release-action@v6
+        with:
+          working_directory: ./python
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+            @semantic-release/exec
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create the package
+        if: ${{ steps.release.outputs.new_release_version }}
+        run: dotnet pack --configuration Release ${{ env.PROJECT_PATH }}
+
+      - name: Publish NuGet package
+        if: ${{ steps.release.outputs.new_release_version }}
+        run: |
+          if [ -z "${{ secrets.NUGET_TOKEN }}" ]; then
+            echo "::warning::NuGet secrets are missing. Skipping NuGet publish."
+            exit 0
+          fi
+          dotnet nuget push ${{ env.PROJECT_PATH }}/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json

@@ -1,0 +1,22 @@
+[project]
+# Update with your actual project details
+name = "lift_button_ibanfr"
+version = "0.1.0"
+# Update with your author details
+authors = [
+    { name="Iván Fernández", email="ibanFR@users.noreply.github.com" },
+]
+description = "Python implementation of the Lift Button software"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+# Update with your project URLs
+Homepage = "https://github.com/ibanFR/semantic-release-python"
+Issues = "https://github.com/ibanFR/semantic-release-python/issues"

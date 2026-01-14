@@ -1,0 +1,22 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "./updateVersion.sh '${nextRelease.version}' 'LiftButton/LiftButton.csproj'"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["LiftButton/LiftButton.csproj", "CHANGELOG.md"],
+        "message": "build(release): release version ${nextRelease.version}"
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}

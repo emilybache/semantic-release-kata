@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>IbanFR.SemanticRelease.LiftButton</PackageId>
+        <Version>0.1.0</Version>
+        <Authors>Iván Fernández</Authors>
+        <Company>IbanFR</Company>
+        <Description>Csharp implementation of the LiftButton software</Description>
+    </PropertyGroup>
+
+</Project>

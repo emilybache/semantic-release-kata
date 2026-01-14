@@ -1,0 +1,8 @@
+# Project exclude paths
+/java/target/
+/.idea/
+/docs/_site/
+/python/.idea/
+/python/.coverage
+/python/junit/test-results.xml
+/java/.idea/

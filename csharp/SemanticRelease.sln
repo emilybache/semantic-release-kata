@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiftButton.Tests", "LiftButton.Tests\LiftButton.Tests.csproj", "{4F142163-ED8F-4661-A3EC-C3F81E642520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiftButton", "LiftButton\LiftButton.csproj", "{549547D4-5020-474A-813F-EECB74EDA0F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F142163-ED8F-4661-A3EC-C3F81E642520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F142163-ED8F-4661-A3EC-C3F81E642520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F142163-ED8F-4661-A3EC-C3F81E642520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F142163-ED8F-4661-A3EC-C3F81E642520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{549547D4-5020-474A-813F-EECB74EDA0F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{549547D4-5020-474A-813F-EECB74EDA0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{549547D4-5020-474A-813F-EECB74EDA0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{549547D4-5020-474A-813F-EECB74EDA0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

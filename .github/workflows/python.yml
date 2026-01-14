@@ -1,0 +1,79 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "python/**"
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "python/**"
+
+permissions:
+  # Permissions required for Semantic Release step
+  contents: write
+  issues: write
+  pull-requests: write
+  # Permission required for Trusted Publishing
+  id-token: write
+
+jobs:
+  semantic-release:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/lift_button_ibanfr # update with your package name
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        working-directory: ./python
+        run: |
+          python -m pip install --upgrade pip build
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Test with pytest
+        working-directory: ./python
+        run: pytest
+
+      - name: Semantic Release
+        id: release
+        uses: cycjimmy/semantic-release-action@v6
+        with:
+          working_directory: ./python
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+            @semantic-release/exec
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build distribution packages 📦
+        if: steps.release.outputs.new_release_published == 'true'
+        working-directory: ./python
+        run: python -m build
+
+      - name: Publish packages 📦 to TestPyPI
+        if: steps.release.outputs.new_release_published == 'true'
+        id: publish
+        continue-on-error: true
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: python/dist
+
+      - name: Warning message
+        if: steps.publish.outcome == 'failure'
+        run: echo "Trusted Publisher not configured, skipping TestPyPI publish"

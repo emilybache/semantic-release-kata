@@ -23,4 +23,8 @@ public class Lift {
         return lightOn = false;
 
     }
+    public  boolean alarme(){
+        if (lightOn = true );
+        return true;
+    }
 }

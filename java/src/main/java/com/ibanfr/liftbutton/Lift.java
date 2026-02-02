@@ -18,4 +18,9 @@ public class Lift {
     public boolean isLightOn() {
         return lightOn;
     }
+    public boolean economiEnergie(){
+
+        return lightOn = false;
+
+    }
 }

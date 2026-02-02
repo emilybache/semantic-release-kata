@@ -14,4 +14,8 @@ public class Lift {
     public boolean light() {
         return lightOn;
     }
+
+    public boolean isLightOn() {
+        return lightOn;
+    }
 }

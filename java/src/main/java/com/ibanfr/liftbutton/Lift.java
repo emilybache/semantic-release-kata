@@ -14,4 +14,17 @@ public class Lift {
     public boolean light() {
         return lightOn;
     }
+
+    public boolean isLightOn() {
+        return lightOn;
+    }
+    public boolean economiEnergie(){
+
+        return lightOn = false;
+
+    }
+    public  boolean alarme(){
+        if (lightOn = true );
+        return true;
+    }
 }
